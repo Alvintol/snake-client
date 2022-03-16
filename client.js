@@ -1,11 +1,12 @@
 const { Socket } = require("dgram");
 const net = require("net");
+const { constants } = require('./constants')
 
 // establishes a connection with the game server
 const connect = function () {
   const conn = net.createConnection({
-    host: '10.0.2.15',
-    port: 50541,
+    host: constants.IP,
+    port: constants.PORT,
   });
 
   // interpret incoming data as text
@@ -13,19 +14,15 @@ const connect = function () {
 
   conn.on("connect", () => {
     conn.write('Name: AT');
-    console.log('You are inside me...');
-    // conn.write('Move: up');
-    // conn.write('Move: left');
-    // conn.write('Move: up');
-    // conn.write('Move: left');
-  });
-  
+    console.log('I are inside...');
 
-  conn.setTimeout(3000);
-  conn.on('timeout', () => {
-    console.log('game timeout');
-    conn.end();
+    conn.setTimeout(3000);
+    conn.on('timeout', () => {
+      console.log('No movement. Timed Out');
+      conn.end();
+    });
   });
+
   return conn;
 };
 
