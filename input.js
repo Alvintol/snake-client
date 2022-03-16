@@ -1,8 +1,6 @@
-const { Socket } = require("dgram");
-const net = require("net");
 let connection;
 
-const setupInput = (conn) => {
+const setupInput = conn => {
   connection = conn;
   const stdin = process.stdin;
   stdin.setRawMode(true);
@@ -11,7 +9,7 @@ const setupInput = (conn) => {
   stdin.on("data", handleUserInput);
 };
 
-const handleUserInput = (key) => {
+const handleUserInput = key => {
   switch (key) {
   case 'w': connection.write('Move: up');
     break;

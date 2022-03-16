@@ -1,12 +1,11 @@
-const { Socket } = require("dgram");
 const net = require("net");
-const { constants } = require('./constants')
+const { IP, PORT } = require('./constants')
 
 // establishes a connection with the game server
-const connect = function () {
+const connect = () => {
   const conn = net.createConnection({
-    host: constants.IP,
-    port: constants.PORT,
+    host: IP,
+    port: PORT,
   });
 
   // interpret incoming data as text
@@ -25,7 +24,5 @@ const connect = function () {
 
   return conn;
 };
-
-
 
 module.exports = { connect };
