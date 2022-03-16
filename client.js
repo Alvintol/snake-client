@@ -13,7 +13,7 @@ const connect = function () {
 
   conn.on("connect", () => {
     conn.write('Name: AT');
-    console.log('You are inside me...');
+    console.log('You are inside me...');2
     // conn.write('Move: up');
     // conn.write('Move: left');
     // conn.write('Move: up');
